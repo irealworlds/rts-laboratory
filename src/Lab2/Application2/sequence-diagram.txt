@@ -1,0 +1,22 @@
+title Application 2
+
+Main->ThreadAnalysisController:1: Start()
+Main->ThreadAnalysisWindow:1: Start()
+
+Main->Fir 1:1: Start()
+Fir 1->Fir 1:perform activity
+Fir 1->Fir 1:increment count
+Fir 1->ThreadAnalysisController: notify of value change (observable)
+ThreadAnalysisController->ThreadAnalysisWindow: set progress bar value
+
+Main->Fir 2:1: Start()
+Fir 2->Fir 2:perform activity
+Fir 2->Fir 2:increment count
+Fir 2->ThreadAnalysisController: notify of value change (observable)
+ThreadAnalysisController->ThreadAnalysisWindow: set progress bar value
+
+Main->Fir 3:1: Start()
+Fir 3->Fir 3:perform activity
+Fir 3->Fir 3:increment count
+Fir 3->ThreadAnalysisController: notify of value change (observable)
+ThreadAnalysisController->ThreadAnalysisWindow: set progress bar value
