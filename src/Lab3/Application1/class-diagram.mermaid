@@ -1,0 +1,28 @@
+classDiagram
+    direction RL
+    class FileService {
+        +String fileName
+        +BufferedReader in
+        +PrintWriter out
+        +FileService(String)
+        +write(String) void
+        +read() String
+    }
+    class RThread {
+        +FileService service
+        +run() void
+    }
+    class WThread {
+        +FileService service
+        +run() void
+    }
+
+    class Main {
+        +main()$ void
+        +isStopThreads()$ bool
+    }
+
+    Main o-- WThread
+    Main o-- RThread
+    WThread o-- FileService
+    RThread o-- FileService

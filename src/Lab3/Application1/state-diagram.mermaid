@@ -1,0 +1,24 @@
+stateDiagram-v2
+    [*] --> Active
+
+    state Active {
+        %% RThread
+        %% S1 = Waiting for synchronization
+        %% S2 = Synchronization finished
+        %% S3 = Finished reading
+        [*] --> S11: run()
+        S11 --> S12
+        S12 --> S13 : read()
+        S13 --> [*]
+
+        --
+
+        %% WThread
+        %% S1 = Waiting for synchronization
+        %% S2 = Synchronization finished
+        %% S3 = Finished writing
+        [*] --> S21: run()
+        S21 --> S22
+        S22 --> S23 : write()
+        S23 --> [*]
+    }
