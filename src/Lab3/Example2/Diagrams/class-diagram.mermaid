@@ -1,0 +1,44 @@
+classDiagram
+
+    class Main {
+        +main()$ void
+    }
+    class Buffer {
+        +ArrayList~double~ content
+        ~synchronized~put(double) void
+        ~synchronized~get() double
+    }
+    class ArrayList {
+
+    }
+    class Consumer {
+        -Buffer bf
+        +run() void
+    }
+    class Thread {
+
+    }
+
+    class Producer {
+        -Buffer bf
+        -Thread thread
+        +run() void
+        +start() void
+    }
+
+    class Runnable {
+        <<interface>>
+    }
+
+    Main *-- Buffer
+    Main *-- Consumer
+    Main *-- Producer
+
+    Buffer <-- Producer
+    Buffer <-- Consumer
+    Buffer o-- ArrayList
+
+    Thread <-- Producer
+    Thread <|-- Consumer
+
+    Runnable <|.. Producer

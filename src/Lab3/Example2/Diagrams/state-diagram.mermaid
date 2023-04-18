@@ -1,0 +1,17 @@
+stateDiagram-v2
+    [*] --> Active
+
+    state Active {
+        [*] --> S11 : bf.put
+        S11 --> S12 : sout
+        S12 --> S13 : sleep
+        S13 --> [*]
+        --
+        [*] --> S21
+        S21 --> [*]
+        --
+        [*] --> S31
+        S31 --> [*]
+    }
+
+    Active --> [*]

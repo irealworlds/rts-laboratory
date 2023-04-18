@@ -1,0 +1,34 @@
+classDiagram
+    class Main {
+        +main()$ void
+    }
+    class Thread {
+
+    }
+    class WriteThread {
+        -PipedOutputStream po
+        +run() void
+    }
+    class ReadThread {
+        -PipedInputStream pi
+        +run() void
+        +connect(PipedOutputStream) void
+    }
+    class PipedOutputStream {
+        +getPipe()
+    }
+    class PipedInputStream {
+
+    }
+    class Exception {
+
+    }
+
+    Main *-- WriteThread
+    Main *-- ReadThread
+    Thread <|-- WriteThread
+    Thread <|-- ReadThread
+    PipedOutputStream <-- WriteThread
+    PipedInputStream <-- ReadThread
+    Exception <.. WriteThread
+    Exception <.. ReadThread

@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant Main
+    participant ExecutionThread1
+    participant ExecutionThread2
+
+    Main ->> ExecutionThread1: 1: start()
+    activate ExecutionThread1
+    Main ->> ExecutionThread2: 2: start()
+    activate ExecutionThread2
+
+    ExecutionThread1 ->> ExecutionThread1: print state 1
+    ExecutionThread1 ->> ExecutionThread1: sleep
+    ExecutionThread2 ->> ExecutionThread2: print state 1
+    ExecutionThread2 ->> ExecutionThread2: sleep
+
+    ExecutionThread1 ->> ExecutionThread1: print state 2
+    ExecutionThread1 ->> ExecutionThread1: sleep
+    ExecutionThread2 ->> ExecutionThread2: print state 2
+    ExecutionThread2 ->> ExecutionThread2: sleep
+
+    ExecutionThread1 ->> ExecutionThread1: print state 3
+    ExecutionThread2 ->> ExecutionThread2: sleep
+    ExecutionThread2 ->> ExecutionThread2: print state 3
+    ExecutionThread1 ->> ExecutionThread1: sleep
+
+    ExecutionThread1 ->> ExecutionThread1: print state 4
+    ExecutionThread2 ->> ExecutionThread2: print state 4
+
+    deactivate ExecutionThread1
+    deactivate ExecutionThread2
+

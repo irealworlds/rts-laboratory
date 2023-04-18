@@ -1,0 +1,24 @@
+stateDiagram-v2
+    [*] --> Active
+
+    state Active {
+        [*] --> S11: Print name start
+        S11 --> S12 : print
+        S12 --> S13 : sleep
+        S13 --> S11
+        S13 --> [*] : Print name end
+        --
+        [*] --> S21: Print name start
+        S21 --> S22 : print
+        S22 --> S23 : sleep
+        S23 --> S21
+        S23 --> [*] : Print name end
+        --
+        [*] --> S31: Print name start
+        S31 --> S32 : print
+        S32 --> S33 : sleep
+        S33 --> S31
+        S33 --> [*] : Print name end
+    }
+
+    Active --> [*]

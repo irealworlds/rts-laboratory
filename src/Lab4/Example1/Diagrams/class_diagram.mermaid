@@ -1,0 +1,19 @@
+classDiagram
+    class Main {
+        +main()$ void
+    }
+    class ExecutionThread {
+        ~Integer monitor
+        ~int sleep_min
+        ~int sleep_max
+        ~int activity_min
+        ~int activity_max
+        +ExecutionThread(int, int, int, int, int)
+        +run() void
+    }
+    class Thread {
+
+    }
+
+    Thread <|-- ExecutionThread
+    Main <-- ExecutionThread

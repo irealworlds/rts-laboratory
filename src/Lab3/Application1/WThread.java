@@ -12,7 +12,11 @@ public class WThread extends Thread{
 
     public void run(){
         synchronized (service) {
-            while(!Main.isStopThreads()){
+            while(!
+
+
+
+                    Main.isStopThreads()){
                 String msg = String.valueOf(Math.round(Math.random()*100));
                 service.write(msg);
                 try {

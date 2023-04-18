@@ -1,0 +1,24 @@
+classDiagram
+    class ThreadGroupDemo {
+        +main()$ void
+    }
+
+    class ThreadEx {
+        ~boolean stop
+        +run() void
+        +stopThread() void
+    }
+    class Thread {
+
+    }
+    class ThreadGroup {
+
+    }
+    class Exception {
+
+    }
+
+    ThreadGroupDemo -- ThreadEx
+    Thread <|-- ThreadEx
+    ThreadGroup <|-- ThreadGroupDemo
+    Exception <.. ThreadGroupDemo
