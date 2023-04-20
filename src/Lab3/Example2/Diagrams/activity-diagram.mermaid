@@ -1,0 +1,32 @@
+stateDiagram-v2
+    state join_state <<join>>
+    state if_state <<choice>>
+    state if_state2 <<choice>>
+    state if_state3 <<choice>>
+
+    state fork_state <<fork>>
+        [*] --> fork_state
+        fork_state --> Producer
+        Producer --> if_state
+        if_state --> bufput : true
+        bufput --> Print
+        Print --> Sleep
+        Sleep --> if_state
+        Sleep --> join_state
+
+        fork_state --> Consumer1
+        Consumer1 --> if_state2
+        if_state2 --> bfget1 : true
+        bfget1 --> PrintReceived1
+        PrintReceived1 --> if_state2
+        PrintReceived1 --> join_state
+
+        fork_state --> Consumer2
+        Consumer2 --> if_state3
+        if_state3 --> bfget2 : true
+        bfget2 --> PrintReceived2
+        PrintReceived2 --> if_state3
+        PrintReceived2 --> join_state
+
+    state join_state <<join>>
+        join_state --> [*]

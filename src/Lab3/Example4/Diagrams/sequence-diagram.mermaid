@@ -1,0 +1,50 @@
+sequenceDiagram
+    participant Main
+    participant Tg
+    participant Fir1
+    participant Fir2
+    participant Fir3
+    participant Monitor
+    participant MonitorLock
+
+    Main ->> Tg: 1: tg add Fir1
+    activate Tg
+    deactivate Tg
+    Main ->> Fir1: 2: start
+    activate Fir1
+    Fir1 ->> Fir1: 3: run
+    Main ->> Fir1: 4: stop
+    Fir1 ->> Monitor: 5: stop
+    deactivate Fir1
+    activate Monitor
+    Monitor ->> MonitorLock: 6: aquire
+    activate MonitorLock
+    Monitor ->> MonitorLock: 7: release
+    deactivate MonitorLock
+    deactivate Monitor
+
+    Main ->> Fir2: 8: start
+    activate Fir2
+    Fir2 ->> Fir2: 9: run
+    Main ->> Fir2: stop
+    Fir2 ->> Monitor: 10: stop
+    deactivate Fir2
+    activate Monitor
+    Monitor ->> MonitorLock: 11: aquire
+    activate MonitorLock
+    Monitor ->> MonitorLock: 12: release
+    deactivate MonitorLock
+    deactivate Monitor
+
+    Main ->> Fir3: 13: start
+    activate Fir3
+    Fir3 ->> Fir3: 14: run
+    Main ->> Fir3: stop
+    Fir3 ->> Monitor: 15: stop
+    deactivate Fir3
+    activate Monitor
+    Monitor ->> MonitorLock: 16: aquire
+    activate MonitorLock
+    Monitor ->> MonitorLock: 17: release
+    deactivate MonitorLock
+    deactivate Monitor

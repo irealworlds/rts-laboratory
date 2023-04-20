@@ -1,0 +1,7 @@
+flowchart LR
+    Main --> |4: start| WriteThread
+    WriteThread --- |+run| WriteThread
+    WriteThread --> |2: getPipe| ReadThread
+    ReadThread --- |+run| ReadThread
+    Main --- |1: connect| ReadThread
+    Main --- |3: start| ReadThread
