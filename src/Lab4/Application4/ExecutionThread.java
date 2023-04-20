@@ -13,14 +13,16 @@ public class ExecutionThread extends BaseExerciseThread {
     private final int sleepMax;
     private final int activityMin;
     private final int activityMax;
+    private final Thread joinTo;
 
-    public ExecutionThread(Object[] notifyTo, Object waitsFor, int sleepMin, int sleepMax, int activityMin, int activityMax) {
+    public ExecutionThread(Object[] notifyTo, Object waitsFor, int sleepMin, int sleepMax, int activityMin, int activityMax, Thread joinTo) {
         this.notifyTo = notifyTo == null ? new Object[] {} : notifyTo;
         this.waitsFor = waitsFor;
         this.sleepMin = sleepMin;
         this.sleepMax = sleepMax;
         this.activityMin = activityMin;
         this.activityMax = activityMax;
+        this.joinTo = joinTo;
     }
 
     @Override
@@ -53,10 +55,12 @@ public class ExecutionThread extends BaseExerciseThread {
 
         this.printMessage("State 3");
 
-        try {
-            this.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (this.joinTo != null) {
+            try {
+                this.joinTo.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

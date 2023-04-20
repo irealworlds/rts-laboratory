@@ -29,6 +29,8 @@ public class ExecutionThread extends BaseExerciseThread {
                     this.printMessage("State 2");
 
                     this.activity(this.activityMin, this.activityMax);
+
+                    this.sleep(this.sleepMin, this.sleepMax);
                 }
             }
         } else {
@@ -36,10 +38,10 @@ public class ExecutionThread extends BaseExerciseThread {
                 this.printMessage("State 2");
 
                 this.activity(this.activityMin, this.activityMax);
+
+                this.sleep(this.sleepMin, this.sleepMax);
             }
         }
-
-        this.sleep(this.sleepMin, this.sleepMax);
 
         this.printMessage("State 3");
     }
