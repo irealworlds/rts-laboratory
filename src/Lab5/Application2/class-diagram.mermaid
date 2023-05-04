@@ -1,0 +1,23 @@
+classDiagram
+    class Thread {
+
+    }
+    class Semaphore {
+
+    }
+    class Main {
+        +main()$ void
+    }
+    class Fir {
+        ~int name
+        ~int delay
+        ~int k
+        ~int permit
+        ~Semaphore s
+        +Fir(int, Semaphore, int, int, int)
+        +run() void
+    }
+    Thread <|-- Fir
+    Main o-- Fir
+    Main o-- Semaphore
+    Fir o-- Semaphore

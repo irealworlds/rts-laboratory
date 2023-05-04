@@ -1,0 +1,21 @@
+classDiagram
+    class Thread {
+
+    }
+    class Semaphore {
+
+    }
+    class Main {
+        +main()$ void
+    }
+    class ExecutionThread {
+        ~int sleep
+        ~int activity_min
+        ~int activity_max
+        ~Semaphore s
+        +ExecutionThread(int, int, int, Semaphore)
+        +run() void
+    }
+    Thread <|-- ExecutionThread
+    Main o-- ExecutionThread
+    Main o-- Semaphore
