@@ -1,0 +1,35 @@
+sequenceDiagram
+    participant Main
+    participant Semaphore
+    participant Fir1
+    participant Fir2
+
+    Main ->> Semaphore: 1: create
+    Main ->> Fir1: 2: start
+    Main ->> Fir2: 3: start
+
+    par
+        Fir1 ->> Fir1: 4: run
+        Fir1 ->> Fir1: state1
+        Fir1 ->> Fir1: sleep
+        Fir1 ->> Fir1: state2
+        Fir1 ->> Semaphore: acquire
+        activate Semaphore
+        Fir1 ->> Fir1: state3
+        Fir1 ->> Fir1: loop
+        Fir1 ->> Semaphore: release
+        deactivate Semaphore
+        Fir1 ->> Fir1: state4
+    and
+        Fir2 ->> Fir2: 5: run
+        Fir2 ->> Fir2: state1
+        Fir2 ->> Fir2: sleep
+        Fir2 ->> Fir2: message1
+        Fir2 ->> Semaphore: acquire
+        activate Semaphore
+        Fir2 ->> Fir2: state3
+        Fir2 ->> Fir2: loop
+        Fir2 ->> Semaphore: release
+        deactivate Semaphore
+        Fir2 ->> Fir2: state4
+    end

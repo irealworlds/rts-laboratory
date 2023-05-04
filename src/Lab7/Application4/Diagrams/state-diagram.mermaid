@@ -1,0 +1,26 @@
+   stateDiagram-v2
+
+    state "state12 [4 7]" as state12
+    state "state22 [5 7]" as state22
+    state "state32 [3 6]" as state32
+
+    [*] --> Active
+    state Active {
+        [*] --> state11
+        state11 --> state12: Semaphore.acquire
+        state12 --> state13: Semaphore.release
+        state13 --> state14: sleep[3]
+        state14 --> state11
+        --
+        [*] --> state21
+        state21 --> state22: Semaphore.acquire
+        state22 --> state23: Semaphore.release
+        state23 --> state24: sleep[6]
+        state24 --> state21
+        --
+        [*] --> state31
+        state31 --> state32: Semaphore.acquire
+        state32 --> state33: Semaphore.release
+        state33 --> state34: sleep[5]
+        state34 --> state31
+    }

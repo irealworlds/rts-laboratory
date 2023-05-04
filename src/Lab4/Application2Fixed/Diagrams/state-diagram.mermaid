@@ -1,0 +1,21 @@
+   stateDiagram-v2
+
+    state "state11 [2 4]" as state11
+    state "state12 [4 6]" as state12
+    state "state21 [3 5]" as state21
+    state "state22 [5 7]" as state22
+
+    [*] --> Active
+    state Active {
+        [*] --> state11
+        state11 --> state12: acquire lock1
+        state12 --> state13: acquire lock2
+        state13 --> state14: sleep[4], release locks
+        state14 --> [*]
+        --
+        [*] --> state21
+        state21 --> state22: acquire lock1
+        state22 --> state23: acquire lock2
+        state23 --> state24: sleep[5], release locks
+        state24 --> [*]
+    }

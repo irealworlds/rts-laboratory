@@ -1,0 +1,22 @@
+classDiagram
+    class Thread {
+
+    }
+    class ReentrantLock {
+
+    }
+    class Main {
+        +main()$ void
+    }
+    class ExecutionThread {
+        ~int sleep
+        ~int activity_min
+        ~int activity_max
+        ~ReentrantLock lock1
+        ~ReentrantLock lock2
+        +ExecutionThread(int, int, int, ReentrantLock, ReentrantLock)
+        +run() void
+    }
+    Thread <|-- ExecutionThread
+    Main o-- ExecutionThread
+    Main o-- ReentrantLock
