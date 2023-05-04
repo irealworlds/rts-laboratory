@@ -29,7 +29,6 @@ public class ExecutionThread extends Thread {
         }
         System.out.println(this.getName() + " - TRANSITION 1 - 2");
         if (this.lock1.tryLock()) {
-            lock1.lock();
             try {
                 System.out.println(this.getName() + " - STATE 2");
                 k = (int) Math.round(Math.random() * (activity2[1] - activity2[0]) + activity2[1]);
@@ -42,6 +41,12 @@ public class ExecutionThread extends Thread {
                 if (locked) {
                     try {
                         System.out.println(this.getName() + " - STATE 3");
+
+                        try {
+                            Thread.sleep(sleep);
+                        } catch (Exception e) {
+
+                        }
                     } finally {
                         lock2.unlock();
                     }
@@ -50,44 +55,9 @@ public class ExecutionThread extends Thread {
                 lock1.unlock();
             }
             System.out.println(this.getName() + " - TRANSITION 3 - 4");
-            try {
-                Thread.sleep(sleep);
-            } catch (Exception e) {
 
-            }
-
+            System.out.println(this.getName() + " - STATE 4");
         }
-
-        if (this.lock2.tryLock()) {
-            lock2.lock();
-            try {
-                System.out.println(this.getName() + " - STATE 2");
-                k = (int) Math.round(Math.random() * (activity2[1] - activity2[0]) + activity2[1]);
-                for (int i = 0; i < k * 100000; i++) {
-                    i++;
-                    i--;
-                }
-                System.out.println(this.getName() + " - TRANSITION 2 - 3");
-                boolean locked = lock1.tryLock();
-                if (locked) {
-                    try {
-                        System.out.println(this.getName() + " - STATE 3");
-                    } finally {
-                        lock1.unlock();
-                    }
-                }
-            } finally {
-                lock2.unlock();
-            }
-            System.out.println(this.getName() + " - TRANSITION 3 - 4");
-            try {
-                Thread.sleep(sleep);
-            } catch (Exception e) {
-
-            }
-
-        }
-        System.out.println(this.getName() + " - STATE 4");
     }
 
 }

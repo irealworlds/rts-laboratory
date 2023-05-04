@@ -5,8 +5,8 @@ sequenceDiagram
     participant Fir2
 
     Main ->> Semaphore: 1: create
-    Main ->> Fir1: 2: create
-    Main ->> Fir2: 3: create
+    Main ->> Fir1: 2: start
+    Main ->> Fir2: 3: start
 
     par
         Fir1 ->> Fir1: 4: run
