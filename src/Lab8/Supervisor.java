@@ -44,7 +44,7 @@ public class Supervisor extends Thread {
                     ps_i2.release();
                 }
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 }
